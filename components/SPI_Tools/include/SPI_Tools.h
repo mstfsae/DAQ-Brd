@@ -3,16 +3,16 @@
 
 #include <stdio.h>
 #include "esp_system.h"
-#include "driver/spi_master.h"
-#include "driver/gpio.h"
-#include <board.h>
+//#include "driver/spi_master.h"
+// #include "driver/gpio.h"
+// #include <board.h>
 spi_bus_config_t buscfg = {
     .miso_io_num = PIN_NUM_MISO,
     .mosi_io_num = PIN_NUM_MOSI,
     .sclk_io_num = PIN_NUM_CLK,
     .quadwp_io_num = -1, // -1 sets as not used
     .quadhd_io_num = -1, // -1 sets as not used
-
+s
 };
 // Initializes the SPI bus and configures the SPI settings.
 void spi_init();
