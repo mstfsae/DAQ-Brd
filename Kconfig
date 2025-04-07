@@ -1,0 +1,49 @@
+menu "UART PINS"
+    config TX_GPIO_NUM
+        int "Transmit GPIO Number"
+        range 0 48
+        default 43
+        help
+            UART Transmit GPIO Number
+
+    config RX_GPIO_NUM
+        int "Receive GPIO Number"
+        range 0 48
+        default 44
+        help
+            UART Receive GPIO Number
+endmenu
+
+menu "SPI PINS"
+    config MISO_PIN_NUM
+        int "Master In Slave Out GPIO Number"
+        range 0 48
+        default 13
+        help
+            SPI Master In Slave Out GPIO Number
+
+    config MOSI_PIN_NUM
+        int "Master Out Slave In GPIO Number"
+        range 0 48
+        default 23
+        help
+            SPI Master Out Slave In GPIO Number
+    config CLK_PIN_NUM
+        int "SPI CLK GPIO Number"
+        range 0 48
+        default 12
+        help
+            SPI Clock GPIO Number
+    config DEV1_CS_PIN_NUM
+        int "Device 1 Chip Select GPIO Number"
+        range 0 48
+        default 1
+        help
+            SPI Device 1 Chip Select GPIO Number
+    config DEV2_CS_PIN_NUM
+        int "Device 2 Chip Select GPIO Number"
+        range 0 48
+        default 2
+        help
+            SPI Device 2 Chip Select GPIO Number
+endmenu
