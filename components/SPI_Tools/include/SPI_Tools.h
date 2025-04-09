@@ -3,9 +3,9 @@
 
 #include <stdio.h>
 #include "esp_system.h"
-//#include "driver/spi_master.h"
-// #include "driver/gpio.h"
-// #include <board.h>
+#include "driver/spi_master.h"
+#include "driver/gpio.h"
+
 spi_bus_config_t buscfg = {
     .miso_io_num = PIN_NUM_MISO,
     .mosi_io_num = PIN_NUM_MOSI,

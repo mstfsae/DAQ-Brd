@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "SPI_Tools.h"
-#include <portmacro.h>
+
+//#include <portmacro.h>
 
 void spi_init(spi_host_device_t HOST)
 {
