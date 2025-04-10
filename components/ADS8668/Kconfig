@@ -20,60 +20,339 @@ menu "ADS8668 Channel Configuration"
         int "Number of channels to configure"
         range 1 8
         default 8
+        help
+            Set to 4 for ADS8664, 8 for ADS8668
     
     menu "Channel Input Ranges"
         depends on ADC_NUM_CHANNELS > 0
     
-    # Template for each channel's configuration
-    macro channel_config(num)
-        choice
-            prompt "Channel $(num) Range"
-            default CH$(num)_RANGE_2P5VREF
-            help
-                Input range for Channel $(num)
+    # Channel 0 Configuration
+    menu "Channel 0"
+    choice
+        prompt "Input Range"
+        default CH0_RANGE_2P5VREF
+        help
+            Select input range for Channel 0
     
-            config CH$(num)_RANGE_2P5VREF
-                bool "±2.5 × VREF (0000)"
-            config CH$(num)_RANGE_1P25VREF
-                bool "±1.25 × VREF (0001)"
-            config CH$(num)_RANGE_0P625VREF
-                bool "±0.625 × VREF (0010)"
-            config CH$(num)_RANGE_0P3125VREF
-                bool "±0.3125 × VREF (0011)"
-            config CH$(num)_RANGE_0P15625VREF
-                bool "±0.15625 × VREF (1011)"
-            config CH$(num)_RANGE_0TO2P5VREF
-                bool "0 to 2.5 × VREF (0101)"
-            config CH$(num)_RANGE_0TO1P25VREF
-                bool "0 to 1.25 × VREF (0110)"
-            config CH$(num)_RANGE_0TO0P625VREF
-                bool "0 to 0.625 × VREF (0111)"
-            config CH$(num)_RANGE_0TO0P3125VREF
-                bool "0 to 0.3125 × VREF (1111)"
-        endchoice
+        config CH0_RANGE_2P5VREF
+            bool "±2.5 × VREF (0000)"
+        config CH0_RANGE_1P25VREF
+            bool "±1.25 × VREF (0001)"
+        config CH0_RANGE_0P625VREF
+            bool "±0.625 × VREF (0010)"
+        config CH0_RANGE_0P3125VREF
+            bool "±0.3125 × VREF (0011)"
+        config CH0_RANGE_0P15625VREF
+            bool "±0.15625 × VREF (1011)"
+        config CH0_RANGE_0TO2P5VREF
+            bool "0 to 2.5 × VREF (0101)"
+        config CH0_RANGE_0TO1P25VREF
+            bool "0 to 1.25 × VREF (0110)"
+        config CH0_RANGE_0TO0P625VREF
+            bool "0 to 0.625 × VREF (0111)"
+        config CH0_RANGE_0TO0P3125VREF
+            bool "0 to 0.3125 × VREF (1111)"
+    endchoice
     
-        config CH$(num)_RANGE_VAL
-            hex
-            default 0x0 if CH$(num)_RANGE_2P5VREF
-            default 0x1 if CH$(num)_RANGE_1P25VREF
-            default 0x2 if CH$(num)_RANGE_0P625VREF
-            default 0x3 if CH$(num)_RANGE_0P3125VREF
-            default 0xB if CH$(num)_RANGE_0P15625VREF
-            default 0x5 if CH$(num)_RANGE_0TO2P5VREF
-            default 0x6 if CH$(num)_RANGE_0TO1P25VREF
-            default 0x7 if CH$(num)_RANGE_0TO0P625VREF
-            default 0xF if CH$(num)_RANGE_0TO0P3125VREF
-    endmacro
-    
-    # Instantiate for all channels
-    $(channel_config,0)
-    $(channel_config,1)
-    $(channel_config,2)
-    $(channel_config,3)
-    $(channel_config,4)
-    $(channel_config,5)
-    $(channel_config,6)
-    $(channel_config,7)
-    
+    config CH0_RANGE_VAL
+        hex
+        default 0x0 if CH0_RANGE_2P5VREF
+        default 0x1 if CH0_RANGE_1P25VREF
+        default 0x2 if CH0_RANGE_0P625VREF
+        default 0x3 if CH0_RANGE_0P3125VREF
+        default 0xB if CH0_RANGE_0P15625VREF
+        default 0x5 if CH0_RANGE_0TO2P5VREF
+        default 0x6 if CH0_RANGE_0TO1P25VREF
+        default 0x7 if CH0_RANGE_0TO0P625VREF
+        default 0xF if CH0_RANGE_0TO0P3125VREF
     endmenu
+    
+    # Channel 1 Configuration
+    menu "Channel 1"
+    choice
+        prompt "Input Range"
+        default CH1_RANGE_2P5VREF
+        help
+            Select input range for Channel 1
+    
+        config CH1_RANGE_2P5VREF
+            bool "±2.5 × VREF (0000)"
+        config CH1_RANGE_1P25VREF
+            bool "±1.25 × VREF (0001)"
+        config CH1_RANGE_0P625VREF
+            bool "±0.625 × VREF (0010)"
+        config CH1_RANGE_0P3125VREF
+            bool "±0.3125 × VREF (0011)"
+        config CH1_RANGE_0P15625VREF
+            bool "±0.15625 × VREF (1011)"
+        config CH1_RANGE_0TO2P5VREF
+            bool "0 to 2.5 × VREF (0101)"
+        config CH1_RANGE_0TO1P25VREF
+            bool "0 to 1.25 × VREF (0110)"
+        config CH1_RANGE_0TO0P625VREF
+            bool "0 to 0.625 × VREF (0111)"
+        config CH1_RANGE_0TO0P3125VREF
+            bool "0 to 0.3125 × VREF (1111)"
+    endchoice
+    
+    config CH1_RANGE_VAL
+        hex
+        default 0x0 if CH1_RANGE_2P5VREF
+        default 0x1 if CH1_RANGE_1P25VREF
+        default 0x2 if CH1_RANGE_0P625VREF
+        default 0x3 if CH1_RANGE_0P3125VREF
+        default 0xB if CH1_RANGE_0P15625VREF
+        default 0x5 if CH1_RANGE_0TO2P5VREF
+        default 0x6 if CH1_RANGE_0TO1P25VREF
+        default 0x7 if CH1_RANGE_0TO0P625VREF
+        default 0xF if CH1_RANGE_0TO0P3125VREF
     endmenu
+    
+    # Channel 2 Configuration
+    menu "Channel 2"
+    choice
+        prompt "Input Range"
+        default CH2_RANGE_2P5VREF
+        help
+            Select input range for Channel 2
+    
+        config CH2_RANGE_2P5VREF
+            bool "±2.5 × VREF (0000)"
+        config CH2_RANGE_1P25VREF
+            bool "±1.25 × VREF (0001)"
+        config CH2_RANGE_0P625VREF
+            bool "±0.625 × VREF (0010)"
+        config CH2_RANGE_0P3125VREF
+            bool "±0.3125 × VREF (0011)"
+        config CH2_RANGE_0P15625VREF
+            bool "±0.15625 × VREF (1011)"
+        config CH2_RANGE_0TO2P5VREF
+            bool "0 to 2.5 × VREF (0101)"
+        config CH2_RANGE_0TO1P25VREF
+            bool "0 to 1.25 × VREF (0110)"
+        config CH2_RANGE_0TO0P625VREF
+            bool "0 to 0.625 × VREF (0111)"
+        config CH2_RANGE_0TO0P3125VREF
+            bool "0 to 0.3125 × VREF (1111)"
+    endchoice
+    
+    config CH2_RANGE_VAL
+        hex
+        default 0x0 if CH2_RANGE_2P5VREF
+        default 0x1 if CH2_RANGE_1P25VREF
+        default 0x2 if CH2_RANGE_0P625VREF
+        default 0x3 if CH2_RANGE_0P3125VREF
+        default 0xB if CH2_RANGE_0P15625VREF
+        default 0x5 if CH2_RANGE_0TO2P5VREF
+        default 0x6 if CH2_RANGE_0TO1P25VREF
+        default 0x7 if CH2_RANGE_0TO0P625VREF
+        default 0xF if CH2_RANGE_0TO0P3125VREF
+    endmenu
+    
+    # Channel 3 Configuration
+    menu "Channel 3"
+    choice
+        prompt "Input Range"
+        default CH3_RANGE_2P5VREF
+        help
+            Select input range for Channel 3
+    
+        config CH3_RANGE_2P5VREF
+            bool "±2.5 × VREF (0000)"
+        config CH3_RANGE_1P25VREF
+            bool "±1.25 × VREF (0001)"
+        config CH3_RANGE_0P625VREF
+            bool "±0.625 × VREF (0010)"
+        config CH3_RANGE_0P3125VREF
+            bool "±0.3125 × VREF (0011)"
+        config CH3_RANGE_0P15625VREF
+            bool "±0.15625 × VREF (1011)"
+        config CH3_RANGE_0TO2P5VREF
+            bool "0 to 2.5 × VREF (0101)"
+        config CH3_RANGE_0TO1P25VREF
+            bool "0 to 1.25 × VREF (0110)"
+        config CH3_RANGE_0TO0P625VREF
+            bool "0 to 0.625 × VREF (0111)"
+        config CH3_RANGE_0TO0P3125VREF
+            bool "0 to 0.3125 × VREF (1111)"
+    endchoice
+    
+    config CH3_RANGE_VAL
+        hex
+        default 0x0 if CH3_RANGE_2P5VREF
+        default 0x1 if CH3_RANGE_1P25VREF
+        default 0x2 if CH3_RANGE_0P625VREF
+        default 0x3 if CH3_RANGE_0P3125VREF
+        default 0xB if CH3_RANGE_0P15625VREF
+        default 0x5 if CH3_RANGE_0TO2P5VREF
+        default 0x6 if CH3_RANGE_0TO1P25VREF
+        default 0x7 if CH3_RANGE_0TO0P625VREF
+        default 0xF if CH3_RANGE_0TO0P3125VREF
+    endmenu
+    
+    # Channel 4 Configuration
+    menu "Channel 4"
+    choice
+        prompt "Input Range"
+        default CH4_RANGE_2P5VREF
+        help
+            Select input range for Channel 4
+    
+        config CH4_RANGE_2P5VREF
+            bool "±2.5 × VREF (0000)"
+        config CH4_RANGE_1P25VREF
+            bool "±1.25 × VREF (0001)"
+        config CH4_RANGE_0P625VREF
+            bool "±0.625 × VREF (0010)"
+        config CH4_RANGE_0P3125VREF
+            bool "±0.3125 × VREF (0011)"
+        config CH4_RANGE_0P15625VREF
+            bool "±0.15625 × VREF (1011)"
+        config CH4_RANGE_0TO2P5VREF
+            bool "0 to 2.5 × VREF (0101)"
+        config CH4_RANGE_0TO1P25VREF
+            bool "0 to 1.25 × VREF (0110)"
+        config CH4_RANGE_0TO0P625VREF
+            bool "0 to 0.625 × VREF (0111)"
+        config CH4_RANGE_0TO0P3125VREF
+            bool "0 to 0.3125 × VREF (1111)"
+    endchoice
+    
+    config CH4_RANGE_VAL
+        hex
+        default 0x0 if CH4_RANGE_2P5VREF
+        default 0x1 if CH4_RANGE_1P25VREF
+        default 0x2 if CH4_RANGE_0P625VREF
+        default 0x3 if CH4_RANGE_0P3125VREF
+        default 0xB if CH4_RANGE_0P15625VREF
+        default 0x5 if CH4_RANGE_0TO2P5VREF
+        default 0x6 if CH4_RANGE_0TO1P25VREF
+        default 0x7 if CH4_RANGE_0TO0P625VREF
+        default 0xF if CH4_RANGE_0TO0P3125VREF
+    endmenu
+    
+    # Channel 5 Configuration
+    menu "Channel 5"
+    choice
+        prompt "Input Range"
+        default CH5_RANGE_2P5VREF
+        help
+            Select input range for Channel 5
+    
+        config CH5_RANGE_2P5VREF
+            bool "±2.5 × VREF (0000)"
+        config CH5_RANGE_1P25VREF
+            bool "±1.25 × VREF (0001)"
+        config CH5_RANGE_0P625VREF
+            bool "±0.625 × VREF (0010)"
+        config CH5_RANGE_0P3125VREF
+            bool "±0.3125 × VREF (0011)"
+        config CH5_RANGE_0P15625VREF
+            bool "±0.15625 × VREF (1011)"
+        config CH5_RANGE_0TO2P5VREF
+            bool "0 to 2.5 × VREF (0101)"
+        config CH5_RANGE_0TO1P25VREF
+            bool "0 to 1.25 × VREF (0110)"
+        config CH5_RANGE_0TO0P625VREF
+            bool "0 to 0.625 × VREF (0111)"
+        config CH5_RANGE_0TO0P3125VREF
+            bool "0 to 0.3125 × VREF (1111)"
+    endchoice
+    
+    config CH5_RANGE_VAL
+        hex
+        default 0x0 if CH5_RANGE_2P5VREF
+        default 0x1 if CH5_RANGE_1P25VREF
+        default 0x2 if CH5_RANGE_0P625VREF
+        default 0x3 if CH5_RANGE_0P3125VREF
+        default 0xB if CH5_RANGE_0P15625VREF
+        default 0x5 if CH5_RANGE_0TO2P5VREF
+        default 0x6 if CH5_RANGE_0TO1P25VREF
+        default 0x7 if CH5_RANGE_0TO0P625VREF
+        default 0xF if CH5_RANGE_0TO0P3125VREF
+    endmenu
+    
+    # Channel 6 Configuration
+    menu "Channel 6"
+    choice
+        prompt "Input Range"
+        default CH6_RANGE_2P5VREF
+        help
+            Select input range for Channel 6
+    
+        config CH6_RANGE_2P5VREF
+            bool "±2.5 × VREF (0000)"
+        config CH6_RANGE_1P25VREF
+            bool "±1.25 × VREF (0001)"
+        config CH6_RANGE_0P625VREF
+            bool "±0.625 × VREF (0010)"
+        config CH6_RANGE_0P3125VREF
+            bool "±0.3125 × VREF (0011)"
+        config CH6_RANGE_0P15625VREF
+            bool "±0.15625 × VREF (1011)"
+        config CH6_RANGE_0TO2P5VREF
+            bool "0 to 2.5 × VREF (0101)"
+        config CH6_RANGE_0TO1P25VREF
+            bool "0 to 1.25 × VREF (0110)"
+        config CH6_RANGE_0TO0P625VREF
+            bool "0 to 0.625 × VREF (0111)"
+        config CH6_RANGE_0TO0P3125VREF
+            bool "0 to 0.3125 × VREF (1111)"
+    endchoice
+    
+    config CH6_RANGE_VAL
+        hex
+        default 0x0 if CH6_RANGE_2P5VREF
+        default 0x1 if CH6_RANGE_1P25VREF
+        default 0x2 if CH6_RANGE_0P625VREF
+        default 0x3 if CH6_RANGE_0P3125VREF
+        default 0xB if CH6_RANGE_0P15625VREF
+        default 0x5 if CH6_RANGE_0TO2P5VREF
+        default 0x6 if CH6_RANGE_0TO1P25VREF
+        default 0x7 if CH6_RANGE_0TO0P625VREF
+        default 0xF if CH6_RANGE_0TO0P3125VREF
+    endmenu
+    
+    # Channel 7 Configuration
+    menu "Channel 7"
+    choice
+        prompt "Input Range"
+        default CH7_RANGE_2P5VREF
+        help
+            Select input range for Channel 7
+    
+        config CH7_RANGE_2P5VREF
+            bool "±2.5 × VREF (0000)"
+        config CH7_RANGE_1P25VREF
+            bool "±1.25 × VREF (0001)"
+        config CH7_RANGE_0P625VREF
+            bool "±0.625 × VREF (0010)"
+        config CH7_RANGE_0P3125VREF
+            bool "±0.3125 × VREF (0011)"
+        config CH7_RANGE_0P15625VREF
+            bool "±0.15625 × VREF (1011)"
+        config CH7_RANGE_0TO2P5VREF
+            bool "0 to 2.5 × VREF (0101)"
+        config CH7_RANGE_0TO1P25VREF
+            bool "0 to 1.25 × VREF (0110)"
+        config CH7_RANGE_0TO0P625VREF
+            bool "0 to 0.625 × VREF (0111)"
+        config CH7_RANGE_0TO0P3125VREF
+            bool "0 to 0.3125 × VREF (1111)"
+    endchoice
+    
+    config CH7_RANGE_VAL
+        hex
+        default 0x0 if CH7_RANGE_2P5VREF
+        default 0x1 if CH7_RANGE_1P25VREF
+        default 0x2 if CH7_RANGE_0P625VREF
+        default 0x3 if CH7_RANGE_0P3125VREF
+        default 0xB if CH7_RANGE_0P15625VREF
+        default 0x5 if CH7_RANGE_0TO2P5VREF
+        default 0x6 if CH7_RANGE_0TO1P25VREF
+        default 0x7 if CH7_RANGE_0TO0P625VREF
+        default 0xF if CH7_RANGE_0TO0P3125VREF
+    endmenu
+    
+    endmenu # Channel Input Ranges
+    endmenu # ADS8668 Channel Configuration
