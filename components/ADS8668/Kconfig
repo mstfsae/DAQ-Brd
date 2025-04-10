@@ -1,0 +1,319 @@
+choice SPI_HOST
+    prompt "SPI peripheral that controls this bus"
+    default SPI2_HOST
+    help
+        Select SPI peripheral that controls this bus.
+    config SPI2_HOST
+        bool "SPI2_HOST"
+        help
+            Use SPI2_HOST. This is also called HSPI_HOST.w
+    config SPI3_HOST
+        bool "SPI3_HOST"
+        help
+            USE SPI3_HOST. This is also called VSPI_HOST
+endchoice
+
+
+menu "ADS866x ADC Channel Configuration"
+
+    config ADC_NUM_CHANNELS
+        int "Number of ADC channels to configure"
+        range 1 8
+        default 8
+        help
+            Set the number of ADC channels (4 for ADS8664, 8 for ADS8668)
+    
+    menu "Channel Input Ranges"
+        depends on ADC_NUM_CHANNELS > 0
+    
+    # Channel 0 Configuration
+    choice
+        prompt "Channel 0 Input Range"
+        default CH0_RANGE_2P5VREF
+        help
+            Select input range for Channel 0
+    
+        config CH0_RANGE_2P5VREF
+            hex "±2.5 × VREF (0000)"
+            default 0x0
+        config CH0_RANGE_1P25VREF
+            hex "±1.25 × VREF (0001)"
+            default 0x1
+        config CH0_RANGE_0P625VREF
+            hex "±0.625 × VREF (0010)"
+            default 0x2
+        config CH0_RANGE_0P3125VREF
+            hex "±0.3125 × VREF (0011)"
+            default 0x3
+        config CH0_RANGE_0P15625VREF
+            hex "±0.15625 × VREF (1011)"
+            default 0xB
+        config CH0_RANGE_0TO2P5VREF
+            hex "0 to 2.5 × VREF (0101)"
+            default 0x5
+        config CH0_RANGE_0TO1P25VREF
+            hex "0 to 1.25 × VREF (0110)"
+            default 0x6
+        config CH0_RANGE_0TO0P625VREF
+            hex "0 to 0.625 × VREF (0111)"
+            default 0x7
+        config CH0_RANGE_0TO0P3125VREF
+            hex "0 to 0.3125 × VREF (1111)"
+            default 0xF
+    endchoice
+    
+    # Channel 1 Configuration
+    choice
+        prompt "Channel 1 Input Range"
+        default CH1_RANGE_2P5VREF
+        help
+            Select input range for Channel 1
+    
+        config CH1_RANGE_2P5VREF
+            hex "±2.5 × VREF (0000)"
+            default 0x0
+        config CH1_RANGE_1P25VREF
+            hex "±1.25 × VREF (0001)"
+            default 0x1
+        config CH1_RANGE_0P625VREF
+            hex "±0.625 × VREF (0010)"
+            default 0x2
+        config CH1_RANGE_0P3125VREF
+            hex "±0.3125 × VREF (0011)"
+            default 0x3
+        config CH1_RANGE_0P15625VREF
+            hex "±0.15625 × VREF (1011)"
+            default 0xB
+        config CH1_RANGE_0TO2P5VREF
+            hex "0 to 2.5 × VREF (0101)"
+            default 0x5
+        config CH1_RANGE_0TO1P25VREF
+            hex "0 to 1.25 × VREF (0110)"
+            default 0x6
+        config CH1_RANGE_0TO0P625VREF
+            hex "0 to 0.625 × VREF (0111)"
+            default 0x7
+        config CH1_RANGE_0TO0P3125VREF
+            hex "0 to 0.3125 × VREF (1111)"
+            default 0xF
+    endchoice
+    
+    # Channel 2 Configuration
+    choice
+        prompt "Channel 2 Input Range"
+        default CH2_RANGE_2P5VREF
+        help
+            Select input range for Channel 2
+    
+        config CH2_RANGE_2P5VREF
+            hex "±2.5 × VREF (0000)"
+            default 0x0
+        config CH2_RANGE_1P25VREF
+            hex "±1.25 × VREF (0001)"
+            default 0x1
+        config CH2_RANGE_0P625VREF
+            hex "±0.625 × VREF (0010)"
+            default 0x2
+        config CH2_RANGE_0P3125VREF
+            hex "±0.3125 × VREF (0011)"
+            default 0x3
+        config CH2_RANGE_0P15625VREF
+            hex "±0.15625 × VREF (1011)"
+            default 0xB
+        config CH2_RANGE_0TO2P5VREF
+            hex "0 to 2.5 × VREF (0101)"
+            default 0x5
+        config CH2_RANGE_0TO1P25VREF
+            hex "0 to 1.25 × VREF (0110)"
+            default 0x6
+        config CH2_RANGE_0TO0P625VREF
+            hex "0 to 0.625 × VREF (0111)"
+            default 0x7
+        config CH2_RANGE_0TO0P3125VREF
+            hex "0 to 0.3125 × VREF (1111)"
+            default 0xF
+    endchoice
+    
+    # Channel 3 Configuration
+    choice
+        prompt "Channel 3 Input Range"
+        default CH3_RANGE_2P5VREF
+        help
+            Select input range for Channel 3
+    
+        config CH3_RANGE_2P5VREF
+            hex "±2.5 × VREF (0000)"
+            default 0x0
+        config CH3_RANGE_1P25VREF
+            hex "±1.25 × VREF (0001)"
+            default 0x1
+        config CH3_RANGE_0P625VREF
+            hex "±0.625 × VREF (0010)"
+            default 0x2
+        config CH3_RANGE_0P3125VREF
+            hex "±0.3125 × VREF (0011)"
+            default 0x3
+        config CH3_RANGE_0P15625VREF
+            hex "±0.15625 × VREF (1011)"
+            default 0xB
+        config CH3_RANGE_0TO2P5VREF
+            hex "0 to 2.5 × VREF (0101)"
+            default 0x5
+        config CH3_RANGE_0TO1P25VREF
+            hex "0 to 1.25 × VREF (0110)"
+            default 0x6
+        config CH3_RANGE_0TO0P625VREF
+            hex "0 to 0.625 × VREF (0111)"
+            default 0x7
+        config CH3_RANGE_0TO0P3125VREF
+            hex "0 to 0.3125 × VREF (1111)"
+            default 0xF
+    endchoice
+    
+    # Channel 4 Configuration
+    choice
+        prompt "Channel 4 Input Range"
+        default CH4_RANGE_2P5VREF
+        help
+            Select input range for Channel 4
+    
+        config CH4_RANGE_2P5VREF
+            hex "±2.5 × VREF (0000)"
+            default 0x0
+        config CH4_RANGE_1P25VREF
+            hex "±1.25 × VREF (0001)"
+            default 0x1
+        config CH4_RANGE_0P625VREF
+            hex "±0.625 × VREF (0010)"
+            default 0x2
+        config CH4_RANGE_0P3125VREF
+            hex "±0.3125 × VREF (0011)"
+            default 0x3
+        config CH4_RANGE_0P15625VREF
+            hex "±0.15625 × VREF (1011)"
+            default 0xB
+        config CH4_RANGE_0TO2P5VREF
+            hex "0 to 2.5 × VREF (0101)"
+            default 0x5
+        config CH4_RANGE_0TO1P25VREF
+            hex "0 to 1.25 × VREF (0110)"
+            default 0x6
+        config CH4_RANGE_0TO0P625VREF
+            hex "0 to 0.625 × VREF (0111)"
+            default 0x7
+        config CH4_RANGE_0TO0P3125VREF
+            hex "0 to 0.3125 × VREF (1111)"
+            default 0xF
+    endchoice
+    
+    # Channel 5 Configuration
+    choice
+        prompt "Channel 5 Input Range"
+        default CH5_RANGE_2P5VREF
+        help
+            Select input range for Channel 5
+    
+        config CH5_RANGE_2P5VREF
+            hex "±2.5 × VREF (0000)"
+            default 0x0
+        config CH5_RANGE_1P25VREF
+            hex "±1.25 × VREF (0001)"
+            default 0x1
+        config CH5_RANGE_0P625VREF
+            hex "±0.625 × VREF (0010)"
+            default 0x2
+        config CH5_RANGE_0P3125VREF
+            hex "±0.3125 × VREF (0011)"
+            default 0x3
+        config CH5_RANGE_0P15625VREF
+            hex "±0.15625 × VREF (1011)"
+            default 0xB
+        config CH5_RANGE_0TO2P5VREF
+            hex "0 to 2.5 × VREF (0101)"
+            default 0x5
+        config CH5_RANGE_0TO1P25VREF
+            hex "0 to 1.25 × VREF (0110)"
+            default 0x6
+        config CH5_RANGE_0TO0P625VREF
+            hex "0 to 0.625 × VREF (0111)"
+            default 0x7
+        config CH5_RANGE_0TO0P3125VREF
+            hex "0 to 0.3125 × VREF (1111)"
+            default 0xF
+    endchoice
+    
+    # Channel 6 Configuration
+    choice
+        prompt "Channel 6 Input Range"
+        default CH6_RANGE_2P5VREF
+        help
+            Select input range for Channel 6
+    
+        config CH6_RANGE_2P5VREF
+            hex "±2.5 × VREF (0000)"
+            default 0x0
+        config CH6_RANGE_1P25VREF
+            hex "±1.25 × VREF (0001)"
+            default 0x1
+        config CH6_RANGE_0P625VREF
+            hex "±0.625 × VREF (0010)"
+            default 0x2
+        config CH6_RANGE_0P3125VREF
+            hex "±0.3125 × VREF (0011)"
+            default 0x3
+        config CH6_RANGE_0P15625VREF
+            hex "±0.15625 × VREF (1011)"
+            default 0xB
+        config CH6_RANGE_0TO2P5VREF
+            hex "0 to 2.5 × VREF (0101)"
+            default 0x5
+        config CH6_RANGE_0TO1P25VREF
+            hex "0 to 1.25 × VREF (0110)"
+            default 0x6
+        config CH6_RANGE_0TO0P625VREF
+            hex "0 to 0.625 × VREF (0111)"
+            default 0x7
+        config CH6_RANGE_0TO0P3125VREF
+            hex "0 to 0.3125 × VREF (1111)"
+            default 0xF
+    endchoice
+    
+    # Channel 7 Configuration
+    choice
+        prompt "Channel 7 Input Range"
+        default CH7_RANGE_2P5VREF
+        help
+            Select input range for Channel 7
+    
+        config CH7_RANGE_2P5VREF
+            hex "±2.5 × VREF (0000)"
+            default 0x0
+        config CH7_RANGE_1P25VREF
+            hex "±1.25 × VREF (0001)"
+            default 0x1
+        config CH7_RANGE_0P625VREF
+            hex "±0.625 × VREF (0010)"
+            default 0x2
+        config CH7_RANGE_0P3125VREF
+            hex "±0.3125 × VREF (0011)"
+            default 0x3
+        config CH7_RANGE_0P15625VREF
+            hex "±0.15625 × VREF (1011)"
+            default 0xB
+        config CH7_RANGE_0TO2P5VREF
+            hex "0 to 2.5 × VREF (0101)"
+            default 0x5
+        config CH7_RANGE_0TO1P25VREF
+            hex "0 to 1.25 × VREF (0110)"
+            default 0x6
+        config CH7_RANGE_0TO0P625VREF
+            hex "0 to 0.625 × VREF (0111)"
+            default 0x7
+        config CH7_RANGE_0TO0P3125VREF
+            hex "0 to 0.3125 × VREF (1111)"
+            default 0xF
+    endchoice
+    
+    endmenu # Channel Input Ranges
+    
+    endmenu # ADS866x ADC Channel Configuration
