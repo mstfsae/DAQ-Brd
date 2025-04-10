@@ -25,19 +25,17 @@ spi_bus_config_t buscfg = {
 void spi_init();
 
 /**
- * @brief Performs an SPI transfer by writing and reading data.
+ * @brief Transmits data over SPI bus.
  *
- * This function transfers data over SPI by writing the specified data to the given address and reading the response.
+ * This function writes data to the specified address using the given SPI device handle and transaction descriptor.
  *
- * @param addr The address to write the data to.
- * @param data The data to be written.
- * @param CS The chip select pin to use.
+ * @param CS The chip select line to use for the transaction.
  * @param handle The SPI device handle.
- * @param trans_desc The SPI transaction descriptor.
- * @return The received data from the SPI transfer.
+ * @param trans_desc The transaction descriptor containing the data to be transmitted and receive buffer locations
+ * @return ESP_OK if the transmission is successful, otherwise an error code.
  */
-uint8_t spi_Trans(uint16_t addr, uint8_t data, uint8_t CS, spi_device_handle_t handle, spi_transaction_t trans_desc);
-uint8_t spi_Trans(uint16_t addr, uint8_t data, uint8_t CS, spi_device_handle_t handle, spi_transaction_t trans_desc);     // SPI Transfer writes and reads
+esp_err_t spi_Trans(uint8_t CS, spi_device_handle_t handle, spi_transaction_t trans_desc );     // Function to write data at given address
+
 /**
  * @brief Adds a SPI device to the specified host.
  *
