@@ -35,7 +35,7 @@ esp_err_t spi_Trans(uint8_t CS, spi_device_handle_t handle, spi_transaction_t tr
     //     ESP_LOGE(SPI_TAG, "SPI write operation failed\n");
     // }
     
-    vTaskDelay(1 / portTICK_PERIOD_MS);                                 // Once data is transferred, we provide the delay and then set the CS'
+    // vTaskDelay(1 / portTICK_PERIOD_MS);                       // Once data is transferred, we provide the delay and then set the CS'
     gpio_set_level(CS, 1);                                      // After CS' is high, the slave sill get unselected
     printf("Writing operation completed\n\n");
 

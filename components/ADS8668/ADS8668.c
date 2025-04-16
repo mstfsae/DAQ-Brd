@@ -32,9 +32,24 @@ esp_err_t ADC8668_Init(spi_device_handle_t *handle, int cs_pin)
     return ret;
 }
 
-esp_err_t ADC8668_Read(spi_device_handle_t *spi, uint16_t *data)
+esp_err_t ADC8668_Read(spi_device_handle_t *handle, int cs_pin, uint16_t *data)
 {
     esp_err_t ret = ESP_OK;
+    uint32_t buffer;
 
+    spi_transaction_t trans_desc = {
+            .length = 32, // 
+            .tx_buffer = 0x0000, // Send 0x0000 to read the data register
+            .rx_buffer = buffer,
+        };
+
+    ret = spi_Trans(cs_pin, handle, trans_desc); /** @todo Add retry loop & timeout*/
+
+    if (ret == ESP_OK)
+    {
+        // Process the received data
+        *data = (buffer >> 16) & 0xFFFF; // Extract the 16-bit data from the received buffer
+    }
+    
     return ret;
 }
